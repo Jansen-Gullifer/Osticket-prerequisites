@@ -75,17 +75,86 @@ Click “OK” to connect.
 
 
 <p>
+//Step 1: Download and Prepare osTicket Files
+Download osTicket:
+Inside the VM (osticket-vm), download the osTicket-Installation-Files.zip.
+Unzip it onto your desktop. This should create a folder named osTicket-Installation-Files.
+
+//Step 2: Install and Configure IIS
+Install IIS:
+Open the Control Panel and navigate to Programs > Turn Windows features on or off.
+Expand Internet Information Services and then World Wide Web Services.
+Under Application Development Features, check the box for CGI.
+Click OK to install IIS with CGI support.
+
+//Step 3: Install PHP and Required Components
+Install PHP Manager for IIS:
+
+From the osTicket-Installation-Files folder, run PHPManagerForIIS_V1.5.0.msi and follow the prompts to install it.
+Install URL Rewrite Module:
+
+From the same folder, run rewrite_amd64_en-US.msi to install the Rewrite Module.
+Set Up PHP Directory:
+
+Create a new directory: C:\PHP.
+Install PHP:
+
+From the osTicket-Installation-Files folder, unzip php-7.3.8-nts-Win32-VC15-x86.zip into the C:\PHP folder.
+Install Visual C++ Redistributable:
+
+Run VC_redist.x86.exe from the osTicket-Installation-Files folder to install the necessary libraries.
+
+//Step 4: Install MySQL
+Install MySQL:
+
+Run mysql-5.5.62-win32.msi from the osTicket-Installation-Files folder.
+Choose Typical Setup during installation.
+Configure MySQL:
+
+After installation, launch the MySQL Configuration Wizard.
+Select Standard Configuration.
+Set the Username to root and Password to root.
+</p>
+
+![image](https://github.com/user-attachments/assets/2898016a-1674-4b89-8b1b-5bdd9dbfce28)
+
 
 </p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+//Step 1: Prepare IIS and PHP
+Open IIS as Admin and register PHP:
+Right-click the IIS icon and select Run as administrator.
+In PHP Manager, register PHP using C:\PHP\php-cgi.exe.
+Enable CGI in Control Panel > Programs > Turn Windows features on or off > Internet Information Services > World Wide Web Services > Application Development Features.
+Reload IIS by stopping and starting the server.
+
+//Step 2: Install osTicket
+Download and Set Up osTicket:
+Unzip osTicket-v1.15.8.zip from the osTicket-Installation-Files folder.
+Copy the upload folder to C:\inetpub\wwwroot and rename it to osTicket.
+Access osTicket via http://localhost/osTicket, then enable necessary PHP extensions (php_imap.dll, php_intl.dll, php_opcache.dll) through PHP Manager.
+
+//Step 3: Configure Database
+Prepare Configuration:
+Rename C:\inetpub\wwwroot\osTicket\include\ost-sampleconfig.php to ost-config.php.
+Set permissions for ost-config.php to allow Full Control for Everyone.
+Install HeidiSQL from the installation files and create a new session (Username: root, Password: root).
+Create a database named osTicket.
+
+//Step 4: Complete Installation
+Finish osTicket Setup:
+In the osTicket setup, input the database details:
+MySQL Database: osTicket
+MySQL Username: root
+MySQL Password: root
+Click Install Now! Once installed, access:
+Helpdesk login: http://localhost/osTicket/scp/login.php
+End Users URL: http://localhost/osTicket/
+Clean up by deleting the setup folder and setting ost-config.php to Read Only.
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+![image](https://github.com/user-attachments/assets/4340a42c-f325-43cc-9ef3-569b03222548)
+
+
 </p>
 <br />
